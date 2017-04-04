@@ -5,8 +5,78 @@ describe('Game', function() {
   var game = new Game();
 
   describe('Constructor', function() {
-    it('should have player property', function() {
+    it('should have players property', function() {
       expect(game).to.have.property('players');
-    })
-  })
+    });
+    it('should have currentCount property set to 0.', function() {
+      expect(game).to.have.property('currentCount').to.be.equal(0);
+    });
+    it('should have strictMode property set to false', function() {
+      expect(game).to.have.property('strictMode').to.be.equal(false);
+    });
+    it('should have powerOn property set to false', function() {
+      expect(game).to.have.property('powerOn').to.be.equal(false);
+    });
+    it('should have playing property set to false', function() {
+      expect(game).to.have.property('playing').to.be.equal(false);
+    });
+    it('should have currentPlayer property set to null.', function() {
+      expect(game).to.have.property('currentPlayer').to.be.equal(null);
+    });
+    it('should have gameWon property set to false', function() {
+      expect(game).to.have.property('gameWon').to.be.equal(false);
+    });
+    it('should have init method', function() {
+      expect(game).to.have.property('init').to.be.a('function');
+    });
+    it('should have restart method', function() {
+      expect(game).to.have.property('restart').to.be.a('function');
+    });
+    it('should have addPlayer method', function() {
+      expect(game).to.have.property('addPlayer').to.be.a('function');
+    });
+    it('should have addCurrentCount method', function() {
+      expect(game).to.have.property('addCurrentCount').to.be.a('function');
+    });
+    it('should have togglePower method.', function() {
+      expect(game).to.have.property('togglePower').to.be.a('function');
+    });
+    it('should have toggleStrictMode method', function() {
+      expect(game).to.have.property('toggleStrictMode').to.be.a('function');
+    });
+    it('should have toggleStart method', function() {
+      expect(game).to.have.property('toggleStart').to.be.a('function');
+    });
+    it('should have switchTurn method', function() {
+      expect(game).to.have.property('switchTurn').to.be.a('function');
+    });
+    it('should have getCurrentPlayer method', function() {
+      expect(game).to.have.property('getCurrentPlayer').to.be.a('function');
+    });
+    it('should have setCurrentPlayer method', function() {
+      expect(game).to.have.property('setCurrentPlayer').to.be.a('function');
+    });
+    it('should have getCurrentCount method', function() {
+      expect(game).to.have.property('getCurrentCount').to.be.a('function');
+    });
+    it('should have getGameWon method', function() {
+      expect(game).to.have.property('getGameWon').to.be.a('function');
+    });
+    it('should have setGameWon method', function() {
+      expect(game).to.have.property('setGameWon').to.be.a('function');
+    });
+    it('should have getPlaying method', function() {
+      expect(game).to.have.property('getPlaying').to.be.a('function');
+    });
+    it('should have setPlaying method', function() {
+      expect(game).to.have.property('setPlaying').to.be.a('function');
+    });
+    it('should have update method', function() {
+      expect(game).to.have.property('update').to.be.a('function');
+    });
+    it('should have render method', function() {
+      expect(game).to.have.property('render').to.be.a('function');
+    });
+  });
+
 })
