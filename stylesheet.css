@@ -1,0 +1,67 @@
+#container {
+  height: 568px;
+  width: 100%;
+}
+
+#power {
+  height: 250px;
+  width: 25%;
+  float: left;
+  font-size: 72px;
+  color: #333238;
+  text-align: center;
+  background-color:  #f2f2f2;
+}
+#counts {
+  height: 250px;
+  width: 75%;
+  float: left;
+  color: #f2f2f2;
+  background-color: #324E5C;
+}
+#digits {
+  float: right;
+  margin-top: 7%;
+  margin-right: 7%;
+  font-size: 130px;
+}
+.pad {
+  width: 50%;
+  height: 650px;
+  float: left;
+}
+
+#green {
+  background-color: #30e849;
+}
+#red {
+  background-color: #F73955;
+}
+#yellow {
+  background-color: #EEC84C;
+}
+#blue {
+
+  background-color: #38A3AC;
+}
+
+#start {
+  width: 50%;
+  height: 175px;
+  background-color: #DBDEB5;
+  float: left;
+  font-size: 72px;
+  text-align: center;
+  font-weight: bold;
+  color: #333238;
+}
+#strict {
+  width: 50%;
+  height: 175px;
+  background-color: #DBDEB5;
+  float: left;
+  text-align: center;
+  font-size: 72px;
+  color: #333238;
+  font-weight: bold;
+}
