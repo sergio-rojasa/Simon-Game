@@ -67,10 +67,16 @@ var Game = (function() {
     return randomNumber;
   };
   Game.prototype.generateRandomSeries = function() {
+    var amountOfGeneratedNumber = 20;
+    var randomSeries = [];
 
+    for(var i = 0; i < amountOfGeneratedNumber; i++) {
+      randomSeries.push(this.generateRandomNumber());
+    }
+    return randomSeries;
   };
   return Game;
 })();
 var simon = new Game();
-console.log(simon.generateRandomNumber());
+console.log(simon.generateRandomSeries());
 module.exports = Game;
