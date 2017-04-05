@@ -19,7 +19,7 @@ var Game = (function() {
 
   };
   Game.prototype.addCurrentCount = function() {
-
+    this.currentCount++;
   };
   Game.prototype.togglePower = function() {
     this.power = !this.power;
@@ -36,8 +36,8 @@ var Game = (function() {
   Game.prototype.getCurrentPlayer = function() {
 
   };
-  Game.prototype.setCurrentPlayer = function() {
-
+  Game.prototype.setCurrentPlayer = function(player) {
+    this.currentPlayer = player;
   };
   Game.prototype.getCurrentCount = function() {
 

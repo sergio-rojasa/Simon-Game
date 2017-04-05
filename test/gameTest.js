@@ -124,6 +124,27 @@ describe('Game', function() {
     })
   });
 
+  describe('#addCurrentCount', function() {
+    it('should have one the current count.', function() {
+      game.currentCount = 1;
+      game.addCurrentCount();
+      expect(game).to.have.property('currentCount').to.be.equal(2);
+    });
+  });
+
+  describe('#setCurrentPlayer', function() {
+    it('should set current player to human.', function() {
+      game.currentPlayer = 'computer';
+      game.setCurrentPlayer('human');
+      expect(game).to.have.property('currentPlayer').to.be.equal('human');
+    })
+    it('should set current player to computer', function() {
+      game.currentPlayer = 'human';
+      game.setCurrentPlayer('computer');
+      expect(game).to.have.property('currentPlayer').to.be.equal('computer');
+    });
+  });
+
   describe('#generateRandomNumber', function() {
     it('should have generated a number from 0-3', function() {
 
