@@ -1,3 +1,4 @@
+
 var expect = require('chai').expect;
 var Game = require('../app/game');
 
@@ -8,6 +9,9 @@ describe('Game', function() {
     it('should have players property', function() {
       expect(game).to.have.property('players');
     });
+    it('should have generatedSeries', function() {
+      expect(game).to.have.property('generatedSeries');
+    })
     it('should have currentCount property set to 0.', function() {
       expect(game).to.have.property('currentCount').to.be.equal(0);
     });
@@ -77,6 +81,17 @@ describe('Game', function() {
     it('should have render method', function() {
       expect(game).to.have.property('render').to.be.a('function');
     });
+    it('should have generateRandomNumber', function() {
+      expect(game).to.have.property('generateRandomNumber').to.be.a('function');
+    });
+    it('should have generateRandomSeries', function() {
+      expect(game).to.have.property('generateRandomSeries').to.be.a('function');
+    });
   });
 
+  describe('#generateRandomNumber', function() {
+    it('should have generated a number from 0-3', function() {
+
+    });
+  })
 })

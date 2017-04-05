@@ -1,6 +1,7 @@
 var Game = (function() {
   function Game() {
     this.players = [];
+    this.generatedSeries = [];
     this.currentCount = 0;
     this.strictMode = false;
     this.powerOn = false;
@@ -59,6 +60,17 @@ var Game = (function() {
   Game.prototype.render = function() {
 
   };
+  Game.prototype.generateRandomNumber = function() {
+    var numberOfButtons = 4;
+    var randomNumber = Math.floor(Math.random() * numberOfButtons);
+
+    return randomNumber;
+  };
+  Game.prototype.generateRandomSeries = function() {
+
+  };
   return Game;
 })();
+var simon = new Game();
+console.log(simon.generateRandomNumber());
 module.exports = Game;
