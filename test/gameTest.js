@@ -13,7 +13,7 @@ describe('Game', function() {
       expect(game).to.have.property('generatedSeries');
     })
     it('should have currentCount property set to 0.', function() {
-      expect(game).to.have.property('currentCount').to.be.equal(0);
+      expect(game).to.have.property('currentCount').to.be.equal(1);
     });
     it('should have strictMode property set to false', function() {
       expect(game).to.have.property('strictMode').to.be.equal(false);
@@ -89,9 +89,31 @@ describe('Game', function() {
     });
   });
 
+  describe('#restart', function() {
+    it('should have currentCount set to 1.', function() {
+      game.currentCount = 2;
+      game.restart();
+      expect(game).to.have.property('currentCount').to.be.equal(1);
+    });
+
+  });
+
+  describe('#toggleStrictMode', function() {
+    it('should have strict property set to true.', function() {
+      game.strictMode = false;
+      game.toggleStrictMode();
+      expect(game).to.have.property('strictMode').to.be.equal(true);
+    });
+    it('should have strict property set of false.', function() {
+      game.StrictMode = true;
+      game.toggleStrictMode();
+      expect(game).to.have.property('strictMode').to.be.equal(false);
+    })
+  });
   describe('#generateRandomNumber', function() {
     it('should have generated a number from 0-3', function() {
 
     });
-  })
+  });
+
 })

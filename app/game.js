@@ -2,7 +2,7 @@ var Game = (function() {
   function Game() {
     this.players = [];
     this.generatedSeries = [];
-    this.currentCount = 0;
+    this.currentCount = 1;
     this.strictMode = false;
     this.powerOn = false;
     this.playing = false;
@@ -13,7 +13,7 @@ var Game = (function() {
 
   };
   Game.prototype.restart = function() {
-
+    this.currentCount = 1;
   };
   Game.prototype.addPlayer = function() {
 
@@ -25,7 +25,7 @@ var Game = (function() {
 
   };
   Game.prototype.toggleStrictMode = function() {
-
+    this.strictMode = !this.strictMode;
   };
   Game.prototype.toggleStart = function() {
 
