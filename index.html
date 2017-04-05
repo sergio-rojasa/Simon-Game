@@ -7,9 +7,9 @@
 </head>
 <body>
   <div id="container">
-    <div id="power">1/0</div>
+    <div id="power" onclick="simon.togglePower();">1/0</div>
     <div id="counts">
-      <div id="digits">0</div>
+      <div id="digits"> </div>
     </div>
 
     <div class="pad" id="green"></div>
@@ -19,7 +19,7 @@
 
 
     <div id="start" onclick="simon.restart();">start</div>
-    <div id="strict">strict</div>
+    <div id="strict" onclick="simon.toggleStrictMode();">strict</div>
   </div>
 
   <script src="app/game.js"></script>

@@ -18,8 +18,8 @@ describe('Game', function() {
     it('should have strictMode property set to false', function() {
       expect(game).to.have.property('strictMode').to.be.equal(false);
     });
-    it('should have powerOn property set to false', function() {
-      expect(game).to.have.property('powerOn').to.be.equal(false);
+    it('should have power property set to false', function() {
+      expect(game).to.have.property('power').to.be.equal(false);
     });
     it('should have playing property set to false', function() {
       expect(game).to.have.property('playing').to.be.equal(false);
@@ -98,6 +98,19 @@ describe('Game', function() {
 
   });
 
+  describe('#togglePower', function() {
+    it('should have power set to false.', function() {
+      game.power = true;
+      game.togglePower();
+      expect(game).to.have.property('power').to.be.equal(false);
+    });
+    it('should have power set to true.', function() {
+      game.power = false;
+      game.togglePower();
+      expect(game).to.have.property('power').to.be.equal(true);
+    });
+  });
+
   describe('#toggleStrictMode', function() {
     it('should have strict property set to true.', function() {
       game.strictMode = false;
@@ -110,6 +123,7 @@ describe('Game', function() {
       expect(game).to.have.property('strictMode').to.be.equal(false);
     })
   });
+
   describe('#generateRandomNumber', function() {
     it('should have generated a number from 0-3', function() {
 

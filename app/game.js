@@ -4,7 +4,7 @@ var Game = (function() {
     this.generatedSeries = [];
     this.currentCount = 1;
     this.strictMode = false;
-    this.powerOn = false;
+    this.power = false;
     this.playing = false;
     this.currentPlayer = null;
     this.gameWon = false;
@@ -22,7 +22,7 @@ var Game = (function() {
 
   };
   Game.prototype.togglePower = function() {
-
+    this.power = !this.power;
   };
   Game.prototype.toggleStrictMode = function() {
     this.strictMode = !this.strictMode;
