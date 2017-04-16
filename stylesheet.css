@@ -7,41 +7,80 @@
   height: 250px;
   width: 25%;
   float: left;
-  font-size: 72px;
+  font-size: 80px;
+  font-weight: bold;
   color: #333238;
+  background-color: gray;
   text-align: center;
-  background-color:  #f2f2f2;
+  position: relative;
 }
-#counts {
+#toggle {
+  background-color:  #d3d3d3;
+  height: 125px;
+  width: 100%;
+  position: absolute;
+  bottom: 0.5%;
+}
+
+#toggle.on {
+  top: 0.5%;
+  background-color: #00a1ff;
+
+}
+#power.on {
+}
+
+#led {
+  height: 25px;
+  width: 25px;
+  background-color: black;
+}
+#led.on {
+  background-color: red;
+}
+#screen {
   height: 250px;
   width: 75%;
   float: left;
   color: #f2f2f2;
   background-color: #324E5C;
 }
+
 #digits {
   float: right;
   margin-top: 7%;
   margin-right: 7%;
   font-size: 130px;
 }
+
 .pad {
   width: 50%;
   height: 650px;
   float: left;
 }
 
-#green {
+#pad-0.hover {
+  background-color: #21a533;
+}
+#pad-1.hover {
+  background-color: #bc2b40;
+}
+#pad-2.hover {
+  background-color: #af9338;
+}
+#pad-3.hover {
+  background-color: #246c72;
+}
+#pad-0 {
   background-color: #30e849;
 }
-#red {
+#pad-1 {
   background-color: #F73955;
 }
-#yellow {
+#pad-2 {
   background-color: #EEC84C;
 }
-#blue {
-
+#pad-3 {
   background-color: #38A3AC;
 }
 

@@ -1,154 +1,120 @@
-
 var expect = require('chai').expect;
 var Game = require('../app/game');
 
 describe('Game', function() {
-  var game = new Game();
+  var simon = new Game();
 
   describe('Constructor', function() {
-    it('should have players property', function() {
-      expect(game).to.have.property('players');
+    it('should have power property set to false.', function() {
+      expect(simon).to.have.property('power').to.be.equal.false;
     });
-    it('should have generatedSeries', function() {
-      expect(game).to.have.property('generatedSeries');
-    })
-    it('should have currentCount property set to 0.', function() {
-      expect(game).to.have.property('currentCount').to.be.equal(1);
+    it('should have strictMode property set to false.', function() {
+      expect(simon).to.have.property('strictMode').to.be.equal.false;
     });
-    it('should have strictMode property set to false', function() {
-      expect(game).to.have.property('strictMode').to.be.equal(false);
+    it('should have currentCount property set to 1.', function() {
+      expect(simon).to.have.property('currentCount').to.be.equal(1);
     });
-    it('should have power property set to false', function() {
-      expect(game).to.have.property('power').to.be.equal(false);
+    it('should have currentPlayer property set to null', function() {
+      expect(simon).to.have.property('currentPlayer').to.be.null;
     });
-    it('should have playing property set to false', function() {
-      expect(game).to.have.property('playing').to.be.equal(false);
+    it('should have list of players property to be empty.', function() {
+      expect(simon).to.have.property('players').to.be.empty;
     });
-    it('should have currentPlayer property set to null.', function() {
-      expect(game).to.have.property('currentPlayer').to.be.equal(null);
-    });
-    it('should have gameWon property set to false', function() {
-      expect(game).to.have.property('gameWon').to.be.equal(false);
-    });
-    it('should have init method', function() {
-      expect(game).to.have.property('init').to.be.a('function');
-    });
-    it('should have restart method', function() {
-      expect(game).to.have.property('restart').to.be.a('function');
-    });
-    it('should have addPlayer method', function() {
-      expect(game).to.have.property('addPlayer').to.be.a('function');
-    });
-    it('should have addCurrentCount method', function() {
-      expect(game).to.have.property('addCurrentCount').to.be.a('function');
+
+    it('should have getPower method.', function() {
+      expect(simon).to.have.property('getPower').to.be.a('function');
     });
     it('should have togglePower method.', function() {
-      expect(game).to.have.property('togglePower').to.be.a('function');
+      expect(simon).to.have.property('togglePower').to.be.a('function');
     });
-    it('should have toggleStrictMode method', function() {
-      expect(game).to.have.property('toggleStrictMode').to.be.a('function');
+
+    it('should have getStrictMode method.', function() {
+      expect(simon).to.have.property('getStrictMode').to.be.a('function');;
     });
-    it('should have toggleStart method', function() {
-      expect(game).to.have.property('toggleStart').to.be.a('function');
+    it('should have toggleStrictMode method.', function() {
+      expect(simon).to.have.property('toggleStrictMode').to.be.a('function');
     });
-    it('should have switchTurn method', function() {
-      expect(game).to.have.property('switchTurn').to.be.a('function');
+
+    it('should have getCurrentCount method.', function() {
+      expect(simon).to.have.property('getCurrentCount').to.be.a('function');
     });
-    it('should have getCurrentPlayer method', function() {
-      expect(game).to.have.property('getCurrentPlayer').to.be.a('function');
+    it('should have clearCurrentCount method.', function() {
+      expect(simon).to.have.property('clearCurrentCount').to.be.a('function');
     });
-    it('should have setCurrentPlayer method', function() {
-      expect(game).to.have.property('setCurrentPlayer').to.be.a('function');
-    });
-    it('should have getCurrentCount method', function() {
-      expect(game).to.have.property('getCurrentCount').to.be.a('function');
-    });
-    it('should have getGameWon method', function() {
-      expect(game).to.have.property('getGameWon').to.be.a('function');
-    });
-    it('should have setGameWon method', function() {
-      expect(game).to.have.property('setGameWon').to.be.a('function');
-    });
-    it('should have getPlaying method', function() {
-      expect(game).to.have.property('getPlaying').to.be.a('function');
-    });
-    it('should have setPlaying method', function() {
-      expect(game).to.have.property('setPlaying').to.be.a('function');
-    });
-    it('should have update method', function() {
-      expect(game).to.have.property('update').to.be.a('function');
-    });
-    it('should have render method', function() {
-      expect(game).to.have.property('render').to.be.a('function');
-    });
-    it('should have generateRandomNumber', function() {
-      expect(game).to.have.property('generateRandomNumber').to.be.a('function');
-    });
-    it('should have generateRandomSeries', function() {
-      expect(game).to.have.property('generateRandomSeries').to.be.a('function');
+    it('should have addCurrentCount method.', function() {
+      expect(simon).to.have.property('addCurrentCount').to.be.a('function');
     });
   });
 
-  describe('#restart', function() {
-    it('should have currentCount set to 1.', function() {
-      game.currentCount = 2;
-      game.restart();
-      expect(game).to.have.property('currentCount').to.be.equal(1);
+  describe('#getPower', function() {
+    it('should return true from power property.', function() {
+      simon.power = true;
+      expect(simon.getPower()).to.be.true;
     });
-
+    it('should return false from power property.', function() {
+      simon.power = false;
+      expect(simon.getPower()).to.be.false;
+    });
   });
 
   describe('#togglePower', function() {
-    it('should have power set to false.', function() {
-      game.power = true;
-      game.togglePower();
-      expect(game).to.have.property('power').to.be.equal(false);
+    it('should set true to power property.', function() {
+      simon.power = false;
+      simon.togglePower();
+      expect(simon.getPower()).to.be.true;
     });
-    it('should have power set to true.', function() {
-      game.power = false;
-      game.togglePower();
-      expect(game).to.have.property('power').to.be.equal(true);
+    it('should set false to power property.', function() {
+      simon.power = true;
+      simon.togglePower();
+      expect(simon.getPower()).to.be.false;
+    });
+  });
+
+  describe('#getStrictMode', function() {
+    it('should return true from strictMode property.', function() {
+      simon.strictMode = true;
+      expect(simon.getStrictMode()).to.be.true;
+    });
+    it('should return false from strictMode property', function() {
+      simon.strictMode = false;
+      expect(simon.getStrictMode()).to.be.false;
     });
   });
 
   describe('#toggleStrictMode', function() {
-    it('should have strict property set to true.', function() {
-      game.strictMode = false;
-      game.toggleStrictMode();
-      expect(game).to.have.property('strictMode').to.be.equal(true);
+    it('should set true to strictMode property', function() {
+      simon.strictMode = false;
+      simon.toggleStrictMode();
+      expect(simon.getStrictMode()).to.be.true;
     });
-    it('should have strict property set of false.', function() {
-      game.StrictMode = true;
-      game.toggleStrictMode();
-      expect(game).to.have.property('strictMode').to.be.equal(false);
-    })
+    it('should set false to strictMode property.', function() {
+      simon.strictMode = true;
+      simon.toggleStrictMode();
+      expect(simon.getStrictMode()).to.be.false;
+    });
+  });
+
+  describe('#getCurrentCount', function() {
+    it('should return 1 from currentCount property.', function() {
+      simon.strictMode = 1;
+      expect(simon.getCurrentCount()).to.be.equal(1);
+    });
+  });
+
+  describe('#clearCurrentCount', function() {
+    it('should set 1 to currentCount property.', function() {
+      simon.currentCount = 3;
+      simon.clearCurrentCount();
+      expect(simon.getCurrentCount()).to.be.equal(1);
+    });
   });
 
   describe('#addCurrentCount', function() {
-    it('should have one the current count.', function() {
-      game.currentCount = 1;
-      game.addCurrentCount();
-      expect(game).to.have.property('currentCount').to.be.equal(2);
+    it('should add 1 to currentCount property so it can equal to 2.', function() {
+      simon.currentCount = 1;
+      simon.addCurrentCount();
+      expect(simon.getCurrentCount()).to.be.equal(2);
     });
   });
-
-  describe('#setCurrentPlayer', function() {
-    it('should set current player to human.', function() {
-      game.currentPlayer = 'computer';
-      game.setCurrentPlayer('human');
-      expect(game).to.have.property('currentPlayer').to.be.equal('human');
-    })
-    it('should set current player to computer', function() {
-      game.currentPlayer = 'human';
-      game.setCurrentPlayer('computer');
-      expect(game).to.have.property('currentPlayer').to.be.equal('computer');
-    });
-  });
-
-  describe('#generateRandomNumber', function() {
-    it('should have generated a number from 0-3', function() {
-
-    });
-  });
-
-})
+  
+});

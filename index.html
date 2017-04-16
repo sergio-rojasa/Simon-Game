@@ -3,25 +3,28 @@
 <head>
   <meta charset="utf-8">
   <title>Simon Game</title>
-  <link rel="stylesheet" href="stylesheet.css" />
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
   <div id="container">
-    <div id="power" onclick="simon.togglePower();">1/0</div>
-    <div id="counts">
-      <div id="digits"> </div>
+    <div id="power">
+      <div id="toggle"></div>
+    </div>
+    <div id="screen">
+      <p id="digits"></p>
     </div>
 
-    <div class="pad" id="green"></div>
-    <div class="pad" id="red"></div>
-    <div class="pad" id="yellow"></div>
-    <div class="pad" id="blue"></div>
+    <div class="pad" id="pad-0"></div>
+    <div class="pad" id="pad-1"></div>
+    <div class="pad" id="pad-2"></div>
+    <div class="pad" id="pad-3"></div>
 
-
-    <div id="start" onclick="simon.restart();">start</div>
-    <div id="strict" onclick="simon.toggleStrictMode();">strict</div>
+    <div id="start">Start</div>
+    <div id="strict">Strict
+      <div id="led"></div>
+    </div>
   </div>
-
+  <script src="app/player.js"></script>
   <script src="app/game.js"></script>
 </body>
 </html>
