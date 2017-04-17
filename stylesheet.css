@@ -59,28 +59,28 @@
   float: left;
 }
 
-#pad-0.hover {
+#green.hover {
   background-color: #21a533;
 }
-#pad-1.hover {
+#red.hover {
   background-color: #bc2b40;
 }
-#pad-2.hover {
+#yellow.hover {
   background-color: #af9338;
 }
-#pad-3.hover {
+#blue.hover {
   background-color: #246c72;
 }
-#pad-0 {
+#green {
   background-color: #30e849;
 }
-#pad-1 {
+#red {
   background-color: #F73955;
 }
-#pad-2 {
+#yellow {
   background-color: #EEC84C;
 }
-#pad-3 {
+#blue {
   background-color: #38A3AC;
 }
 

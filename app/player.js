@@ -1,6 +1,5 @@
 var Player = (function() {
-  function Player(playerName) {
-    this.name = playerName;
+  function Player() {
     this.moves = [];
   }
   Player.prototype.setMove = function(move) {
