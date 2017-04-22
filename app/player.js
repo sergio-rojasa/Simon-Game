@@ -4,6 +4,9 @@ var Player = (function() {
   }
   Player.prototype.setMove = function(move) {
     this.moves.push(move);
+
+    //launch an event ==> player 1 moved
+    $( document ).trigger( "onHumanMoved"); 
   };
   Player.prototype.getMove = function(movePosition) {
     return this.moves[movePosition-1];
