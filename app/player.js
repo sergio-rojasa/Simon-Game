@@ -15,4 +15,4 @@ var Player = (function() {
 
   return Player;
 })();
-module.exports = Player;
+//module.exports = Player;

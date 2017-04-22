@@ -1,17 +1,33 @@
 //var Player = require('../app/player');
 //var RandomNumber = require('../app/randomNumbers');
+//this.playing = false;
 
 var Game = (function() {
   function Game() {
     this.won = null;
-    this.playing = false;
     this.power = false;
     this.strictMode = false;
-    this.currentCount = 1;
+    this.currentRound = 0;
     this.currentPlayer = null;
-    this.audio = {};
+    this.speed = 900;
     this.players = {};
+    this.audio = {
+      '0': new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+      '1': new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+      '2': new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+      '3': new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+    };
   }
+
+  Game.prototype.clearWon = function() {
+    this.won = null;
+  };
+  Game.prototype.gameWon = function() {
+    this.won = true;
+  };
+  Game.prototype.gameOver = function() {
+    this.won = false;
+  };
 
   Game.prototype.getPower = function() {
     return this.power;
@@ -27,23 +43,14 @@ var Game = (function() {
     this.strictMode = !this.strictMode;
   };
 
-  Game.prototype.toggleRestart = function() {
-    this.clearWon();
-    this.clearCurrentCount();
-    this.setCurrentPlayer('computer');
-    this.togglePlaying();
-    this.players.computer.moves = new RandomNumbers().generateRandomSeries();
-    this.play();
+  Game.prototype.getCurrentRound = function() {
+    return this.currentRound;
   };
-
-  Game.prototype.getCurrentCount = function() {
-    return this.currentCount;
+  Game.prototype.clearCurrentRound = function() {
+    this.currentRound = 0;
   };
-  Game.prototype.clearCurrentCount = function() {
-    this.currentCount = 1;
-  };
-  Game.prototype.addCurrentCount = function() {
-    this.currentCount++;
+  Game.prototype.addCurrentRound = function() {
+    this.currentRound++;
   };
 
   Game.prototype.getCurrentPlayer = function() {
@@ -53,64 +60,59 @@ var Game = (function() {
     this.currentPlayer = player;
   };
 
-  Game.prototype.clearWon = function() {
-    this.won = null;
+  Game.prototype.playAudio = function(pad) {
+    this.audio[pad].play();
   };
-  Game.prototype.gameWon = function() {
-    this.won = true;
-  };
-  Game.prototype.gameOver = function() {
-    this.won = false;
-  };
+  Game.prototype.lightUp = function(pad) {
+    var padNumber = document.getElementById('pad-'+pad);
 
-  Game.prototype.togglePlaying = function() {
-    this.setting.playing = true;
+    padNumber.classList.add('click');
+    setTimeout(function() {
+      padNumber.classList.remove('click');
+    }, this.speed / 2);
   };
-
-  Game.prototype.init = function() {
-    this.bindEvents();
-    this.addPlayer('human');
-    this.addPlayer('computer');
-
-    this.addAudioTrack('green', 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
-    this.addAudioTrack('red', 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
-    this.addAudioTrack('yellow', 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
-    this.addAudioTrack('blue', 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
-  };
-
   Game.prototype.addPlayer = function(name) {
     this.players[name] = new Player();
   };
-  Game.prototype.addAudioTrack = function(name, url) {
-    this.audio[name] = new Audio(url);
+  Game.prototype.display = function() {
+    var digits = document.getElementById('digits');
+    digits.innerHTML = this.getCurrentRound();
   };
 
-  Game.prototype.bindEvents = function() {
-    var power = document.getElementById("power");
-    var strict = document.getElementById('strict');
-    var start = document.getElementById('start');
-
-    var green = document.getElementById('green');
-    var red = document.getElementById('red');
-    var yellow = document.getElementById('yellow');
-    var blue = document.getElementById('blue');
-
-   power.setAttribute('onclick', 'simon.togglePower();');
-   strict.setAttribute('onclick', 'simon.toggleStrictMode();');
-   start.setAttribute('onclick', 'simon.toggleRestart();');
-
-   green.setAttribute('onclick', 'simon.players.human.setMove(0)');
-   red.setAttribute('onclick', 'simon.players.human.setMove(1)');
-   yellow.setAttribute('onclick', 'simon.players.human.setMove(2)');
-   blue.setAttribute('onclick', 'simon.players.human.setMove(3)');
+  Game.prototype.init = function() {
+    this.addPlayer('human');
+    this.addPlayer('computer');
   };
-  
+
+  Game.prototype.toggleRestart = function() {
+    this.clearWon();
+    this.clearCurrentRound();
+    this.setCurrentPlayer('computer');
+    this.players.computer.moves = new RandomNumbers().generateRandomSeries();
+    this.display();
+    this.play();
+  };
+
   Game.prototype.play = function() {
+    this.addCurrentRound();
+    this.display();
+
+    var game = this;
+    var computerTurn = setInterval(function() {
+      game.lightUp(game.players.computer.moves[game.getCurrentRound()-1]);
+      game.playAudio(game.players.computer.moves[game.getCurrentRound()-1]);
+      game.display();
+
+      game.addCurrentRound();
+      if(game.getCurrentRound() >= game.players.computer.moves.length) {
+        clearInterval(computerTurn);
+      }
+    }, game.speed);
 
   };
+
   return Game;
 })();
 var simon = new Game();
 simon.init();
-
-module.exports = Game;
+//module.exports = Game;

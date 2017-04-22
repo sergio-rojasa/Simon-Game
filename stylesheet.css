@@ -59,28 +59,28 @@
   float: left;
 }
 
-#green.hover {
+#pad-0.click {
   background-color: #21a533;
 }
-#red.hover {
+#pad-1.click {
   background-color: #bc2b40;
 }
-#yellow.hover {
+#pad-2.click {
   background-color: #af9338;
 }
-#blue.hover {
+#pad-3.click {
   background-color: #246c72;
 }
-#green {
+#pad-0 {
   background-color: #30e849;
 }
-#red {
+#pad-1 {
   background-color: #F73955;
 }
-#yellow {
+#pad-2 {
   background-color: #EEC84C;
 }
-#blue {
+#pad-3 {
   background-color: #38A3AC;
 }
 

@@ -20,4 +20,4 @@ var RandomNumbers = (function() {
 
   return RandomNumbers;
 })();
-module.exports = RandomNumbers;
+//module.exports = RandomNumbers;
